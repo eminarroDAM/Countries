@@ -1,0 +1,25 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="Filters">
+
+        <EditTextPreference
+            app:key="rarity"
+            app:title="Rarity"
+            app:useSimpleSummaryProvider="true" />
+
+        <MultiSelectListPreference
+            app:key="region"
+            app:title="Region"
+            android:defaultValue="@array/empty_array"
+            android:entries="@array/regions"
+            android:entryValues="@array/region_values"
+            android:persistent="true"
+            app:useSimpleSummaryProvider="true"
+            />
+
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

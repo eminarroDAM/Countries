@@ -1,0 +1,20 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="regions">
+        <item>Africa</item>
+        <item>Americas</item>
+        <item>Asia</item>
+        <item>Europe</item>
+        <item>Oceania</item>
+    </string-array>
+
+    <string-array name="region_values">
+        <item>africa</item>
+        <item>americas</item>
+        <item>asia</item>
+        <item>europe</item>
+        <item>oceania</item>
+    </string-array>
+
+    <string-array name="empty_array"/>
+</resources>
