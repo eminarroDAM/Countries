@@ -23,5 +23,5 @@ public abstract class AppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    public abstract CountryDao getCardDao();
+    public abstract CountryDao getCountryDao();
 }

@@ -50,7 +50,7 @@ public class DetailFragment extends Fragment {
         Intent intent = getActivity().getIntent();
 
         if(intent != null) {
-            Country country = (Country)intent.getSerializableExtra("card");
+            Country country = (Country)intent.getSerializableExtra("country");
 
             if (country != null){
                 showData(country);

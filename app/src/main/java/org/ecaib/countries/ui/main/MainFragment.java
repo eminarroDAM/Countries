@@ -54,13 +54,12 @@ public class MainFragment extends Fragment {
         Set<String> region = preferences.getStringSet("region", new HashSet<String>());
         List<String> regionsList = new ArrayList<>(region);
 
-        Log.e("REGION", region.toString());
 
         items = new ArrayList<>();
 
         adapter = new CountriesAdapter(
                 getContext(),
-                R.layout.lv_cards_row,
+                R.layout.lv_countries_row,
                 R.id.txtTitleRow,
                 items
         );
@@ -87,14 +86,14 @@ public class MainFragment extends Fragment {
 
 
 
-        binding.lvCards.setAdapter(adapter);
+        binding.lvCountries.setAdapter(adapter);
 
-        binding.lvCards.setOnItemClickListener((parent, view1, position, id) -> {
+        binding.lvCountries.setOnItemClickListener((parent, view1, position, id) -> {
             Country country = adapter.getItem(position);
 
             if(!esTablet()) {
                 Intent i = new Intent(getContext(), DetailActivity.class);
-                i.putExtra("card", country);
+                i.putExtra("country", country);
 
                 startActivity(i);
             } else {

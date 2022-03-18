@@ -14,9 +14,7 @@ import org.ecaib.countries.CountryDao;
 import org.ecaib.countries.CountriesApiClient;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,7 +30,7 @@ public class MainViewModel extends AndroidViewModel {
         this.app = application;
         this.appDatabase = AppDatabase.getDatabase(
                 this.getApplication());
-        this.countryDao = appDatabase.getCardDao();
+        this.countryDao = appDatabase.getCountryDao();
     }
 
     public LiveData<List<Country>> getCountries() {

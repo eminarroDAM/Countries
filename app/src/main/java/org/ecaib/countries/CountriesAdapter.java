@@ -11,12 +11,12 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 
-import org.ecaib.countries.databinding.LvCardsRowBinding;
+import org.ecaib.countries.databinding.LvCountriesRowBinding;
 
 import java.util.List;
 
 public class CountriesAdapter extends ArrayAdapter<Country> {
-    private LvCardsRowBinding binding;
+    private LvCountriesRowBinding binding;
 
     public CountriesAdapter(@NonNull Context context, int resource, int textViewResourceId, @NonNull List<Country> objects) {
         super(context, resource, textViewResourceId, objects);
@@ -28,24 +28,24 @@ public class CountriesAdapter extends ArrayAdapter<Country> {
         Country country = getItem(position);
 
         if(convertView == null){
-            binding = LvCardsRowBinding.inflate(
+            binding = LvCountriesRowBinding.inflate(
                     LayoutInflater.from(getContext()),
                     parent,
                     false
             );
         } else {
-            binding = LvCardsRowBinding.bind(convertView);
+            binding = LvCountriesRowBinding.bind(convertView);
         }
 
 
         binding.txtTitleRow.setText(country.getName());
-        binding.txtRarity.setText(country.getCapital());
-        binding.txtType.setText(country.getRegion());
+        binding.txtCapital.setText(country.getCapital());
+        binding.txtRegion.setText(country.getRegion());
 
 
         Glide.with(getContext()
         ).load(country.getFlagUrl()
-        ).into(binding.cardImageRow);
+        ).into(binding.countryImageRow);
 
 
 

@@ -8,7 +8,7 @@
     tools:context=".ui.main.MainFragment">
 
     <ListView
-        android:id="@+id/lvCards"
+        android:id="@+id/lvCountries"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

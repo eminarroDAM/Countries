@@ -3,11 +3,6 @@
 
     <PreferenceCategory app:title="Filters">
 
-        <EditTextPreference
-            app:key="rarity"
-            app:title="Rarity"
-            app:useSimpleSummaryProvider="true" />
-
         <MultiSelectListPreference
             app:key="region"
             app:title="Region"
