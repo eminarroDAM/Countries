@@ -17,12 +17,12 @@ import com.bumptech.glide.Glide;
 
 import org.ecaib.countries.Country;
 import org.ecaib.countries.SharedViewModel;
-import org.ecaib.countries.databinding.MainFragment2Binding;
+import org.ecaib.countries.databinding.DetailFragmentBinding;
 
 public class DetailFragment extends Fragment {
 
     private DetailViewModel mViewModel;
-    private MainFragment2Binding binding;
+    private DetailFragmentBinding binding;
     /*private TextView nameDetail;
     private TextView rarityDetail;
     private TextView manaCostDetail;
@@ -37,7 +37,7 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = MainFragment2Binding.inflate(inflater);
+        binding = DetailFragmentBinding.inflate(inflater);
         View view = binding.getRoot();
 
         /*nameDetail = view.findViewById(R.id.txtNameDetail);
@@ -65,9 +65,10 @@ public class DetailFragment extends Fragment {
 
     private void showData(Country country) {
         binding.txtNameDetail.setText(country.getName());
-        binding.txtRarityDetail.setText(country.getCapital());
-        binding.txtManaCostDetail.setText(String.valueOf(country.getPopulation()));
-        binding.txtTypeDetail.setText(country.getSubregion());
+        binding.txtCapitalDetail.setText(country.getCapital());
+        binding.txtPopulationDetail.setText(String.valueOf(country.getPopulation()));
+        String region = country.getSubregion() + "   -   " + country.getRegion();
+        binding.txtSubregionRegionDetail.setText(region);
         //binding.txtTextDetail.setText(country.getId());
 
 
