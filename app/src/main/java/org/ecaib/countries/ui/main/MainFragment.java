@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,6 +29,9 @@ import org.ecaib.countries.SharedViewModel;
 import org.ecaib.countries.databinding.MainFragmentBinding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class MainFragment extends Fragment {
 
@@ -47,8 +51,10 @@ public class MainFragment extends Fragment {
         View view = binding.getRoot();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String region = preferences.getString("region", "");
+        Set<String> region = preferences.getStringSet("region", new HashSet<String>());
+        List<String> regionsList = new ArrayList<>(region);
 
+        Log.e("REGION", region.toString());
 
         items = new ArrayList<>();
 
@@ -60,10 +66,21 @@ public class MainFragment extends Fragment {
         );
 
         mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        mViewModel.getCountries().observe(getViewLifecycleOwner(), countries -> {
-            adapter.clear();
-            adapter.addAll(countries);
-        });
+
+        // Si las preferencias no tienen region seleccionada, hacemos un get de todos los paises
+        if(region.isEmpty()){
+            mViewModel.getCountries().observe(getViewLifecycleOwner(), countries -> {
+                adapter.clear();
+                adapter.addAll(countries);
+            });
+        } else {
+            mViewModel.getCountriesRegion(regionsList).observe(getViewLifecycleOwner(), countries -> {
+                adapter.clear();
+                adapter.addAll(countries);
+            });
+        }
+
+
 
         SharedViewModel sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 
@@ -139,16 +156,30 @@ public class MainFragment extends Fragment {
         super.onStart();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String rarity = preferences.getString("rarity", "");
+        Set<String> region = preferences.getStringSet("region", new HashSet<String>());
+        List<String> regionsList = new ArrayList<>(region);
+
 
         mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        mViewModel.getCountries().removeObservers(getViewLifecycleOwner());
+
+        if(region.isEmpty()){
+            mViewModel.getCountries().removeObservers(getViewLifecycleOwner());
 
 
-        mViewModel.getCountries().observe(getViewLifecycleOwner(), countries -> {
-            adapter.clear();
-            adapter.addAll(countries);
-        });
+            mViewModel.getCountries().observe(getViewLifecycleOwner(), countries -> {
+                adapter.clear();
+                adapter.addAll(countries);
+            });
+        } else {
+            mViewModel.getCountriesRegion(regionsList).removeObservers(getViewLifecycleOwner());
+
+
+            mViewModel.getCountriesRegion(regionsList).observe(getViewLifecycleOwner(), countries -> {
+                adapter.clear();
+                adapter.addAll(countries);
+            });
+        }
+
 
         refresh();
 

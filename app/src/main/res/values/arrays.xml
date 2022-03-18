@@ -6,15 +6,12 @@
         <item>Asia</item>
         <item>Europe</item>
         <item>Oceania</item>
+        <item>Polar</item>
+        <item>Antarctic Ocean</item>
     </string-array>
 
-    <string-array name="region_values">
-        <item>africa</item>
-        <item>americas</item>
-        <item>asia</item>
-        <item>europe</item>
-        <item>oceania</item>
+
+    <string-array name="default_array">
     </string-array>
 
-    <string-array name="empty_array"/>
 </resources>

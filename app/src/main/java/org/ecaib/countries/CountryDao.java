@@ -6,12 +6,17 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Dao
 public interface CountryDao {
     @Query("select * from Country")
     LiveData<List<Country>> getCountries();
+
+    @Query("select * from Country where region IN (:region)")
+    LiveData<List<Country>> getCountriesRegion(List<String> region);
 
     @Insert
     void addCountries(List<Country> countries);

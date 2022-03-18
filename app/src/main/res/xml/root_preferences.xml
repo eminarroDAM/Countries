@@ -11,9 +11,9 @@
         <MultiSelectListPreference
             app:key="region"
             app:title="Region"
-            android:defaultValue="@array/empty_array"
+            android:defaultValue="@array/default_array"
             android:entries="@array/regions"
-            android:entryValues="@array/region_values"
+            android:entryValues="@array/regions"
             android:persistent="true"
             app:useSimpleSummaryProvider="true"
             />
